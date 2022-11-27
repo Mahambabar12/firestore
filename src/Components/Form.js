@@ -22,7 +22,18 @@ export default function Form() {
                 console.log("err=>", err)
             })
     }
-
+const products = async ()=> {
+ try{
+  const docRef = await addDoc(collection (db, "products"),{
+   first: "Ada",
+   last: "Lovelace",
+   born: 1815
+  });
+  console.log ("Documents written with ID:" , docRef.id)
+ } catch(e){
+  console.error ("Error adding doucment: ",e)
+ }
+}
     return (
         <>
             <label htmlFor="username">Enter Your Username : </label>
@@ -31,7 +42,7 @@ export default function Form() {
             <input type="text" id='email' placeholder='Enter Email' /><br />
             <label htmlFor="username">Enter Your Password : </label>
             <input type="text" id='password' placeholder='Enter Password' /><br /><br />
-            <button onClick={register}>Register</button>
+            <button onClick={products}>Register</button>
         </>
     )
 }
